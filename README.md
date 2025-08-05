@@ -49,33 +49,33 @@ make dev   # spins up Spark-Master, Spark-Worker, and Jupyter Lab
 
 ### 4.3 Run the Pipeline
 
-# 1. Clean listings and reviews
+###### 1. Clean listings and reviews
 spark-submit jobs/clean_listings.py  --input data/raw/listings.csv.gz \
                                      --output data/bronze/listings
 
 spark-submit jobs/clean_reviews.py   --input data/raw/reviews.csv.gz  \
                                      --output data/bronze/reviews
 
-# 2. Join into a gold-level fact table
+###### 2. Join into a gold-level fact table
 spark-submit jobs/join_datasets.py   --listings data/bronze/listings \
                                      --reviews  data/bronze/reviews  \
                                      --output   data/gold/airbnb
 
-# 3. Execute analytic queries
+###### 3. Execute analytic queries
 spark-submit jobs/analyze_airbnb.py  --airbnb  data/gold/airbnb      \
                                      --report  output/analysis.parquet
 
-4.4 Verify Results
+### 4.4 Verify Results
 Open notebooks/exploratory-analysis.ipynb in Jupyter Lab to visualise key metrics such as ADR, occupancy, and review sentiment.
 
-5 · Key Analyses Delivered
+### 5 · Key Analyses Delivered
 Question	Metric Produced	Business Value
 Which neighbourhoods command the highest ADR?	avg_price by neighbourhood	Guides capital allocation and dynamic pricing.
 How does seasonality affect occupancy?	occupancy_rate by month	Informs revenue-management strategies.
 Do longer reviews correlate with higher ratings?	Correlation len(review) vs rating	Improves host engagement tactics.
 What is the growth trajectory of entire-home listings?	YoY % change	Signals market saturation or opportunity.
 
-6 · Performance Tuning Tips
+### 6 · Performance Tuning Tips
 Partitioning – Repartition by city & year to minimise shuffles.
 
 Broadcast Joins – Enable for lookup dimensions under 10 MB.
@@ -84,7 +84,7 @@ Caching – Cache the gold table during iterative notebook analysis.
 
 Executor Memory – Start at 4 G & scale after inspecting spark-ui.
 
-7 · Project Structure
+### 7 · Project Structure
 bash
 Copy
 Edit
@@ -97,20 +97,21 @@ Edit
 ├── tests/               # unit & integration tests
 ├── Makefile             # common dev commands
 └── requirements.txt     # Python deps (production locked)
-8 · Roadmap
+
+### 8 · Roadmap
 Delta Lake support for ACID & time-travel.
 
 MLlib pipeline for revenue forecasting.
 
 Real-time stream with Structured Streaming + Airbnb calendar feed.
 
-9 · Contributing
+### 9 · Contributing
 Pull requests are welcomed if they maintain code quality and business-first focus.
 Please open an issue before making substantial changes.
 
-10 · License
+### 10 · License
 This project is licensed under the MIT License. See LICENSE for details.
 
-11 · Contact
+### 11 · Contact
 GitHub Issues preferred.
 For professional inquiries: Yengkong Sayaovong – ysayaovong@gmail.com
