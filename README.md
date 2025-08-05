@@ -84,30 +84,20 @@ Caching – Cache the gold table during iterative notebook analysis.
 
 Executor Memory – Start at 4 G & scale after inspecting spark-ui.
 
-### 7 · Project Structure
-├── data/                # raw, bronze, silver, gold
-├── jobs/                # Spark batch applications
-├── notebooks/           # EDA & visual storytelling
-├── scripts/             # helper shell scripts
-├── docker/              # docker-compose & Dockerfiles
-├── tests/               # unit & integration tests
-├── Makefile             # common dev commands
-└── requirements.txt     # Python deps (production locked)
-
-### 8 · Roadmap
+### 7 · Roadmap
 Delta Lake support for ACID & time-travel.
 
 MLlib pipeline for revenue forecasting.
 
 Real-time stream with Structured Streaming + Airbnb calendar feed.
 
-### 9 · Contributing
+### 8 · Contributing
 Pull requests are welcomed if they maintain code quality and business-first focus.
 Please open an issue before making substantial changes.
 
-### 10 · License
+### 9 · License
 This project is licensed under the MIT License. See LICENSE for details.
 
-### 11 · Contact
+### 10 · Contact
 GitHub Issues preferred.
 For professional inquiries: Yengkong Sayaovong – ysayaovong@gmail.com
