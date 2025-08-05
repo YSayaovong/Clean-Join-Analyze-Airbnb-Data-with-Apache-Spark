@@ -85,10 +85,6 @@ Caching – Cache the gold table during iterative notebook analysis.
 Executor Memory – Start at 4 G & scale after inspecting spark-ui.
 
 ### 7 · Project Structure
-bash
-Copy
-Edit
-.
 ├── data/                # raw, bronze, silver, gold
 ├── jobs/                # Spark batch applications
 ├── notebooks/           # EDA & visual storytelling
